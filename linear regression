@@ -1,0 +1,73 @@
+Linear Regression
+import numpy as np
+import statistics as stats
+
+# Data
+#dataX = np.array([6, 12, 14, 6, 9, 13, 15, 9])
+#dataY = np.array([300, 400, 560, 250, 290, 650, 630, 520])
+# data of some xyz group
+dataX = np.array([93.33, 86.67, 86.67, 6.67, 80, 80, 60, 73.33,46.67,46.67,86.67,73.33,66.67,93.33,80,66.67,13.33,80,26.67,46.67])
+dataY = np.array([28,25,22,25,24,26,16,21,26,17,27,23,19,25,23,9,18,26,14,7])
+
+X = 80
+
+# Calculate averages
+dataXAvg = np.mean(dataX)
+dataYAvg = np.mean(dataY)
+
+# Deviation from the mean
+x = dataX - dataXAvg
+y = dataY - dataYAvg
+
+# Calculate mode
+modeX = stats.mode(dataX)  # Accessing the first mode value of dataX
+modeY = stats.mode(dataY)  # Accessing the first mode value of dataY
+
+# Calculate median
+medianX = np.median(dataX)
+medianY = np.median(dataY)
+
+# Calculate variance
+varianceX = np.var(dataX)
+varianceY = np.var(dataY)
+
+# Calculate standard deviation
+stdDevX = np.std(dataX)
+stdDevY = np.std(dataY)
+
+# Calculate products and squares
+xy = x * y
+xSqr = x ** 2
+ySqr = y ** 2
+
+# Summations
+sumxy = np.sum(xy)
+sumxSqr = np.sum(xSqr)
+sumySqr = np.sum(ySqr)
+
+# Correlation coefficient
+rCoefficient = sumxy / np.sqrt(sumxSqr * sumySqr)
+
+# Regression coefficients
+b = sumxy / sumxSqr
+a = dataYAvg - b * dataXAvg
+
+# Predict Y for given X
+Y = a + b * X
+
+# Output results
+print("Correlation Coefficient (r):", rCoefficient)
+print("Intercept (a):", a)
+print("Slope (b):", b)
+print("Predicted Y for X =", X, ":", Y)
+
+# Additional statistical measures
+print("\nStatistics for dataX:")
+print("Mean:", dataXAvg)
+print("Mode:", modeX)
+print("Median:", medianX)
+print("Variance:", varianceX)
+print("Standard Deviation:", stdDevX)
+
+print("\nStatistics for dataY:")
+print("Mean:", dataYAvg)
