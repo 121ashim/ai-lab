@@ -1,0 +1,64 @@
+import numpy as np
+
+# import matplotlib.pyplot as plt
+# Training data for AND gate
+X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
+y = np.array([0, 0, 0, 1])
+def step(x,th):
+  if x&gt;=th:
+    return(1)
+  return(0)
+def linearInt(x):
+  return (round(x))
+def predict(X, y, weights):
+  print(&quot;X\tActual\tPredicted&quot;)
+  for x_input, y_output in zip(X, y):
+    inSum=np.sum(x_input * weights)
+    y_pred = step(inSum,th)
+    print(x_input,&quot;\t&quot;,y_output,&quot;\t&quot;,y_pred)
+# initialize constants
+lr = 0.1
+th = 0.5
+# Initialize weights array
+weights = []
+# Loop through each element in X
+for i in range(X.shape[1]): #+1 for te bias
+    # Initialize w randomly between 0 and 1 using Python&#39;s random module &amp; Convert w
+to have only one digit after the decimal point
+    w = round(np.random.rand(),1)
+    weights.append(w)
+print(&quot;Randomly initialized weights for each input:&quot;)
+for i in range(len(weights)):
+    print(f&quot;weights[{i}]:&quot;, weights[i])
+# initialize constants
+lr = 0.1
+th = 0.5
+# Initialize weights array
+weights = []
+# Loop through each element in X
+for i in range(X.shape[1]): #+1 for te bias
+    # Initialize w randomly between 0 and 1 using Python&#39;s random module &amp; Convert w
+to have only one digit after the decimal point
+
+    w = round(np.random.rand(),1)
+    weights.append(w)
+print(&quot;Randomly initialized weights for each input:&quot;)
+for i in range(len(weights)):
+    print(f&quot;weights[{i}]:&quot;, weights[i])
+#For AND/OR Logic Gates
+# print (step(0.5,th))
+iterateFlag = True
+while (iterateFlag):
+  iterateFlag = False
+  for x_input, y_output in zip(X, y):
+    inSum=np.sum(x_input * weights)
+    y_pred = step(inSum,th)
+    err = y_output - y_pred
+    if(err!=0):
+      iterateFlag = True
+      for i in range(len(weights)):
+        dw = lr * x_input[i] * err
+        weights[i] = weights[i] + dw
+      print(&quot;input:&quot;,x_input, &quot;actual output:&quot;,y_output,&quot;predicted output: &quot;,y_pred,&quot;updated
+weights:&quot;, weights)
+print(&quot;Final weights:&quot;, weights)
