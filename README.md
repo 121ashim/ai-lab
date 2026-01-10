@@ -1,1 +1,1 @@
-# ai-lab
+# ai-lab for college lab
