@@ -1,1 +1,1 @@
-# ai-lab for college lab
+# ai-lab for college lab 7th semester
