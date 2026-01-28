@@ -1,2 +1,2 @@
 # ai-lab for college lab 7th semester
-NEPAL  ENGINEERING COLLEGE
+NEPAL  ENGINEERING COLLEG
